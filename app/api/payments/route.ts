@@ -1,0 +1,3 @@
+import { NextResponse } from "next/server";
+import { getPaymentAdapter } from "@/lib/payments";
+export async function POST(request:Request){try{const body=await request.json();if(!body?.amountMinor||!body?.currency||!body?.email||!body?.reference)return NextResponse.json({error:"amountMinor, currency, email and reference are required"},{status:400});if(!Number.isInteger(body.amountMinor)||body.amountMinor<=0)return NextResponse.json({error:"amountMinor must be a positive integer"},{status:400});const result=await getPaymentAdapter().createPayment(body);return NextResponse.json(result,{status:201});}catch(error){return NextResponse.json({error:error instanceof Error?error.message:"Payment initialization failed"},{status:500});}}
