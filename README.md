@@ -1,21 +1,18 @@
-# DyoungPay
+# GLOBAL PAY
 
-DyoungPay is a payment-platform project focused on a modern payment experience for users and businesses, with planned payment gateway integrations including Paystack and Flutterwave.
+Global Pay is a fintech platform foundation for wallets, payments, transfers, merchants, invoicing and developer APIs.
 
-## Project goals
+## Important
+This repository is structured for real integrations, but it does **not** enable real-money movement by itself. Production financial services require regulated payment/banking partners, KYC/AML controls, secrets, provider approval and applicable regulatory permissions.
 
-- Secure payment initiation and verification
-- Paystack integration
-- Flutterwave integration
-- Transaction status handling
-- Clear payment success and failure flows
-- Responsive web experience
-- Backend API architecture suitable for production expansion
+## Architecture
+- Next.js App Router + TypeScript
+- Provider-agnostic payment adapter
+- Double-entry-ready ledger schema
+- Transaction state machine
+- Idempotency keys
+- Server-only provider secrets
+- Supabase-ready data layer
 
-## Security
-
-Never commit API keys, secret keys, passwords, `.env` files, or other credentials to this repository. Use environment variables for sensitive configuration.
-
-## Status
-
-Project repository initialized. Application source will be added as the project implementation is migrated here.
+## Environment
+Copy `.env.example` to `.env.local`. Never expose provider secret keys through `NEXT_PUBLIC_*` variables.
